@@ -13,6 +13,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error: ", err)
 	}
 }
+
 func CourseHandler(w http.ResponseWriter, r *http.Request) {
 	p := mux.Vars(r)
 

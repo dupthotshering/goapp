@@ -189,27 +189,27 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 	httpResp.RespondWithJSON(w, http.StatusOK, map[string]string{"message": "cookie deleted"})
 }
 
-func VerifyCookie(w http.ResponseWriter, r *http.Request) bool {
-	// Retrieve the "my-cookie" cookie from the request
-	cookie, err := r.Cookie("my-cookie")
-	if err != nil {
-		if err == http.ErrNoCookie {
-			// No cookie found, redirect to login page or return an error
-			httpResp.RespondWithError(w, http.StatusSeeOther, "cookie no found")
-			return false
-		}
-		//some other error occured
-		httpResp.RespondWithError(w, http.StatusInternalServerError, "internal server error")
-		return false
-	}
-	// Verify the cookie value
-	if cookie.Value != "my-value" {
-		// Invalid cookie value, redirect to login page or return an error
-		httpResp.RespondWithError(w, http.StatusSeeOther, "cookie does not match")
-		return false
-	}
-	return true
-}
+// func VerifyCookie(w http.ResponseWriter, r *http.Request) bool {
+// 	// Retrieve the "my-cookie" cookie from the request
+// 	cookie, err := r.Cookie("my-cookie")
+// 	if err != nil {
+// 		if err == http.ErrNoCookie {
+// 			// No cookie found, redirect to login page or return an error
+// 			httpResp.RespondWithError(w, http.StatusSeeOther, "cookie no found")
+// 			return false
+// 		}
+// 		//some other error occured
+// 		httpResp.RespondWithError(w, http.StatusInternalServerError, "internal server error")
+// 		return false
+// 	}
+// 	// Verify the cookie value
+// 	if cookie.Value != "my-value" {
+// 		// Invalid cookie value, redirect to login page or return an error
+// 		httpResp.RespondWithError(w, http.StatusSeeOther, "cookie does not match")
+// 		return false
+// 	}
+// 	return true
+// }
 
 // course
 func Addcourse(w http.ResponseWriter, r *http.Request) {
